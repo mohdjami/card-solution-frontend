@@ -62,19 +62,21 @@ export default function Component() {
                 labore et dolore magna aliqua.
               </p>
             </div>
-            <div className="space-x-4">
-              <Link
-                className="inline-flex h-9 items-center justify-center rounded-md px-4 py-2 font-medium shadow transition-colors focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50"
-                style={{ backgroundColor: "#FFFFFF", color: "#582066" }}
-                href="#"
-              >
-                Compare All pro features
-                <ArrowRightIcon
-                  className="ml-2 h-5 w-5"
-                  style={{ color: "#582066" }}
-                />
-              </Link>
-            </div>
+            <section className="w-full py-12 md:py-24 lg:py-32 bg-white-100 dark:bg-white-800">
+              <div className="space-x-4">
+                <Link
+                  className="inline-flex h-9 items-center justify-center rounded-md px-4 py-2 font-medium shadow transition-colors focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50"
+                  style={{ backgroundColor: "#FFFFFF", color: "#582066" }}
+                  href="#"
+                >
+                  Compare All pro features
+                  <ArrowRightIcon
+                    className="ml-2 h-5 w-5"
+                    style={{ color: "#582066" }}
+                  />
+                </Link>
+              </div>
+            </section>
           </div>
         </div>
         <div className="flex justify-center space-x-8">
@@ -215,8 +217,8 @@ export default function Component() {
                 }}
               >
                 I had the pleasure of experiencing the next generation of card
-                solutions with this incredible product. It's refreshing to see
-                such innovation in the financial industry.{" "}
+                solutions with this incredible product. It&apos;s refreshing to
+                see such innovation in the financial industry.{" "}
               </h1>
               <div className="flex flex-col items-center">
                 <Image

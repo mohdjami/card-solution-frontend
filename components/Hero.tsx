@@ -14,11 +14,21 @@ export default function Component() {
               Seamless experience
             </h1>
             <div className="flex items-center justify-center">
-              <div className="w-80 h-80 overflow-auto">
-                <p className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl">
-                  Unleashing The Next Generation Of Card Solutions
-                </p>
-              </div>
+              <p
+                className="font-bold tracking-tighter text-center"
+                style={{
+                  fontFamily: "Manrope, sans-serif",
+                  fontSize: "72px", // Increase the font size to 72px
+                  fontWeight: 600,
+                  lineHeight: "72px",
+                  letterSpacing: "0em",
+                  textAlign: "center",
+                  width: "832px", // Set the width to 832px
+                  height: "216px", // Set the height to 216px
+                }}
+              >
+                Unleashing The Next Generation Of Card Solutions
+              </p>
             </div>
             <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
