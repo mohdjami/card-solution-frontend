@@ -15,16 +15,13 @@ export default function Component() {
             </h1>
             <div className="flex items-center justify-center">
               <p
-                className="font-bold tracking-tighter text-center"
+                className="font-bold tracking-tighter text-center text-4xl sm:text-5xl md:text-6xl"
                 style={{
                   fontFamily: "Manrope, sans-serif",
-                  fontSize: "72px", // Increase the font size to 72px
                   fontWeight: 600,
                   lineHeight: "72px",
                   letterSpacing: "0em",
                   textAlign: "center",
-                  width: "832px", // Set the width to 832px
-                  height: "216px", // Set the height to 216px
                 }}
               >
                 Unleashing The Next Generation Of Card Solutions
