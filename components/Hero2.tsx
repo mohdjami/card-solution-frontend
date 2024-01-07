@@ -214,23 +214,30 @@ export default function Component() {
         </div>{" "}
       </section>
       <section className="w-full py-12 md:py-24 lg:py-32 bg-white-100 dark:bg-white-800">
-        <div className="container px-4 md:px-6">
+        <div className="container px-4 md:px-6 flex justify-center items-center ">
           <div className="flex flex-col items-center space-y-4 text-center">
-            <div className="space-y-2">
-              <h1
-                className="mx-auto max-w-[700px] text-4xl md:text-4xl dark:text-gray-400"
-                style={{ color: "#000000", fontFamily: "Arial, sans-serif" }}
-              >
-                Mode UI{" "}
-              </h1>
-            </div>
-            <div className="space-x-4">
-              Mode UI is a comprehensive design system that empowers designers
-              and developers to create cohesive and visually stunning user
-              interfaces across various platforms and devices{" "}
+            <div className="container px-4 md:px-6 flex justify-center items-center ">
+              <div className="flex flex-col items-center space-y-4 text-center w-[512px] h-[124px] space-y-4">
+                <div className="space-y-2">
+                  <h1
+                    className="mx-auto max-w-[700px] text-4xl md:text-4xl dark:text-gray-400"
+                    style={{
+                      color: "#000000",
+                      fontFamily: "Arial, sans-serif",
+                    }}
+                  >
+                    Mode UI{" "}
+                  </h1>
+                </div>
+                <div className="space-x-4 p-4 bg-white shadow">
+                  Mode UI is a comprehensive design system that empowers
+                  designers and developers to create cohesive and visually
+                  stunning user interfaces across various platforms and devices{" "}
+                </div>
+              </div>
             </div>
           </div>
-        </div>{" "}
+        </div>
       </section>
     </section>
   );
