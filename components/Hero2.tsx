@@ -295,8 +295,12 @@ export default function Component() {
             </div>
           </div>
         </div>{" "}
-        <About />
       </section>
+      <div>
+        <section>
+          <About />
+        </section>{" "}
+      </div>
     </section>
   );
 }
