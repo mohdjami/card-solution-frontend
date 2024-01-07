@@ -1,13 +1,10 @@
 import Link from "next/link";
 import { JSX, SVGProps } from "react";
 import Image from "next/image";
-import { BsFire, BsLayoutTextWindowReverse } from "react-icons/bs";
-import { RxActivityLog } from "react-icons/rx";
-import { TbDeviceAnalytics } from "react-icons/tb";
 
-import { Card, CardDescription, CardTitle } from "@/components/ui/card";
-import HeadingText from "@/components/heading-text";
+import { CardDescription, CardTitle } from "@/components/ui/card";
 import Cards from "./Cards";
+import { Button } from "./ui/button";
 
 export default function Component() {
   return (
@@ -145,6 +142,96 @@ export default function Component() {
           </div>
         </div>
       </>
+      <section className="w-full py-12 md:py-24 lg:py-32 bg-white-100 dark:bg-white-800">
+        <div className="container px-4 md:px-6">
+          <div className="flex flex-col items-center space-y-4 text-center">
+            <div className="space-y-2">
+              <div className="flex flex-col items-center">
+                <Image
+                  alt="Description"
+                  src="/Hero-Logo-Wise.webp"
+                  width={100}
+                  height={100}
+                  objectFit="cover"
+                />
+              </div>
+              <h1
+                className="mx-auto max-w-[700px] text-4xl md:text-4xl dark:text-gray-400"
+                style={{
+                  color: "#000000",
+                  fontFamily: "Arial, sans-serif",
+                  width: "864px",
+                  height: "160px",
+                }}
+              >
+                I had the pleasure of experiencing the next generation of card
+                solutions with this incredible product. It's refreshing to see
+                such innovation in the financial industry.{" "}
+              </h1>
+              <div className="flex flex-col items-center">
+                <Image
+                  alt="Description"
+                  src="/Base avatars.png"
+                  width={50}
+                  height={50}
+                  objectFit="cover"
+                />
+              </div>
+              <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
+                Nick Babich
+              </p>
+              <p className="mx-auto max-w-[700px] text-black-500 md:text-xl dark:text-white-400">
+                Leading Designer
+              </p>
+              <div className="flex flex-col items-center">
+                <Image
+                  alt="Description"
+                  src="/Frame 744.png"
+                  width={100}
+                  height={50}
+                  objectFit="cover"
+                />
+              </div>
+            </div>
+          </div>
+        </div>{" "}
+      </section>
+      <section className="w-full py-12 md:py-24 lg:py-32 bg-white-100 dark:bg-white-800">
+        <div className="container px-4 md:px-6">
+          <div className="flex flex-col items-center space-y-4 text-center">
+            <div className="space-y-2">
+              <h1
+                className="mx-auto max-w-[700px] text-4xl md:text-4xl dark:text-gray-400"
+                style={{ color: "#000000", fontFamily: "Arial, sans-serif" }}
+              >
+                Unlock Limitless Possibilities with Our New Card Solutions{" "}
+              </h1>
+            </div>
+            <div className="space-x-4">
+              <UnlockCard />
+            </div>
+          </div>
+        </div>{" "}
+      </section>
+      <section className="w-full py-12 md:py-24 lg:py-32 bg-white-100 dark:bg-white-800">
+        <div className="container px-4 md:px-6">
+          <div className="flex flex-col items-center space-y-4 text-center">
+            <div className="space-y-2">
+              <h1
+                className="mx-auto max-w-[700px] text-4xl md:text-4xl dark:text-gray-400"
+                style={{ color: "#000000", fontFamily: "Arial, sans-serif" }}
+              >
+                Mode UI{" "}
+              </h1>
+            </div>
+            <div className="space-x-4">
+              Mode UI is a comprehensive design system that empowers designers
+              and developers to create cohesive and visually stunning user
+              interfaces across various platforms and devices{" "}
+            </div>
+          </div>
+        </div>{" "}
+      </section>
     </section>
   );
 }
@@ -167,6 +254,63 @@ function ArrowRightIcon(
     >
       <path d="M5 12h14" />
       <path d="m12 5 7 7-7 7" />
+    </svg>
+  );
+}
+
+function UnlockCard() {
+  return (
+    <div className="flex gap-4">
+      <Button className="bg-purple-600 text-white flex items-center gap-2 px-4 py-2 rounded-md">
+        <UnlockIcon className="h-4 w-4" />
+        Unlock Your Card
+      </Button>
+      <Button className="bg-gray-300 text-black flex items-center gap-2 px-4 py-2 rounded-md">
+        <HelpCircleIcon className="h-4 w-4" />
+        Customer Support
+      </Button>
+    </div>
+  );
+}
+function HelpCircleIcon(
+  props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>
+) {
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <circle cx="12" cy="12" r="10" />
+      <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+      <path d="M12 17h.01" />
+    </svg>
+  );
+}
+
+function UnlockIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
+      <path d="M7 11V7a5 5 0 0 1 9.9-1" />
     </svg>
   );
 }
