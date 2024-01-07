@@ -101,7 +101,17 @@ export default function Component() {
       <>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           <div className="flex flex-col justify-between gap-4 p-4 text-left dark:bg-secondary">
-            <CardTitle className="text-4xl text-purple-600 text-center">
+            <CardTitle
+              className="text-purple-600 text-center"
+              style={{
+                fontFamily: "Manrope, sans-serif",
+                fontSize: "48px",
+                fontWeight: 600,
+                lineHeight: "56px",
+                letterSpacing: "0em",
+                textAlign: "center",
+              }}
+            >
               2 Million
             </CardTitle>{" "}
             <p className="text-center text-black font-bold">Customers</p>{" "}
@@ -111,7 +121,18 @@ export default function Component() {
             </CardDescription>
           </div>
           <div className="flex flex-col justify-between gap-4 p-4 text-left dark:bg-secondary">
-            <CardTitle className="text-4xl text-purple-600 text-center">
+            <CardTitle
+              className="text-purple-600 text-center"
+              style={{
+                fontFamily: "Manrope, sans-serif",
+                fontSize: "48px",
+                fontWeight: 600,
+                lineHeight: "56px",
+                letterSpacing: "0em",
+                textAlign: "center",
+              }}
+            >
+              {" "}
               1K
             </CardTitle>
             <p className="text-center text-black font-bold">Downloads</p>{" "}
@@ -121,7 +142,18 @@ export default function Component() {
             </CardDescription>
           </div>
           <div className="flex flex-col justify-between gap-4 p-4 text-left dark:bg-secondary">
-            <CardTitle className="text-4xl text-purple-600 text-center">
+            <CardTitle
+              className="text-purple-600 text-center"
+              style={{
+                fontFamily: "Manrope, sans-serif",
+                fontSize: "48px",
+                fontWeight: 600,
+                lineHeight: "56px",
+                letterSpacing: "0em",
+                textAlign: "center",
+              }}
+            >
+              {" "}
               $73 Million
             </CardTitle>{" "}
             <p className="text-center text-black font-bold">Transaction</p>{" "}
@@ -131,10 +163,23 @@ export default function Component() {
             </CardDescription>
           </div>
           <div className="flex flex-col justify-between gap-4 p-4 text-left dark:bg-secondary">
-            <CardTitle className="text-4xl text-purple-600 text-center">
+            <CardTitle
+              className="text-purple-600 text-center"
+              style={{
+                fontFamily: "Manrope, sans-serif",
+                fontSize: "48px",
+                fontWeight: 600,
+                lineHeight: "56px",
+                letterSpacing: "0em",
+                textAlign: "center",
+              }}
+            >
+              {" "}
               2.0
             </CardTitle>{" "}
-            <p className="text-center text-black font-bold">Latest Version</p>{" "}
+            <p className="text-center text-black font-bold">
+              Latest Version
+            </p>{" "}
             <CardDescription>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod
@@ -156,10 +201,15 @@ export default function Component() {
                 />
               </div>
               <h1
-                className="mx-auto max-w-[700px] text-4xl md:text-4xl dark:text-gray-400"
+                className="mx-auto max-w-[700px] dark:text-gray-400"
                 style={{
                   color: "#000000",
-                  fontFamily: "Arial, sans-serif",
+                  fontFamily: "Manrope, sans-serif",
+                  fontSize: "32px",
+                  fontWeight: 500,
+                  lineHeight: "40px",
+                  letterSpacing: "0em",
+                  textAlign: "center",
                   width: "864px",
                   height: "160px",
                 }}
@@ -201,8 +251,16 @@ export default function Component() {
           <div className="flex flex-col items-center space-y-4 text-center">
             <div className="space-y-2">
               <h1
-                className="mx-auto max-w-[700px] text-4xl md:text-4xl dark:text-gray-400"
-                style={{ color: "#000000", fontFamily: "Arial, sans-serif" }}
+                className="mx-auto max-w-[700px] dark:text-gray-400"
+                style={{
+                  color: "#000000",
+                  fontFamily: "Manrope, sans-serif",
+                  fontSize: "40px",
+                  fontWeight: 600,
+                  lineHeight: "48px",
+                  letterSpacing: "0em",
+                  textAlign: "center",
+                }}
               >
                 Unlock Limitless Possibilities with Our New Card Solutions{" "}
               </h1>
@@ -217,7 +275,7 @@ export default function Component() {
         <div className="container px-4 md:px-6 flex justify-center items-center ">
           <div className="flex flex-col items-center space-y-4 text-center">
             <div className="container px-4 md:px-6 flex justify-center items-center ">
-              <div className="flex flex-col items-center space-y-4 text-center w-[512px] h-[124px] space-y-4">
+              <div className="flex flex-col items-center text-center w-[512px] h-[124px] space-y-4">
                 <div className="space-y-2">
                   <h1
                     className="mx-auto max-w-[700px] text-4xl md:text-4xl dark:text-gray-400"
