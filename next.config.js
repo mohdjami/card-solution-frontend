@@ -2,6 +2,9 @@
 const nextConfig = {};
 
 module.exports = {
+  images: {
+    domains: ["utfs.io"],
+  },
   async headers() {
     return [
       {
