@@ -1,7 +1,20 @@
+import { authOptions } from "@/lib/auth";
 import { db } from "@/lib/db";
+import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
 export async function GET(req: Request) {
+  const session = await getServerSession(authOptions);
   try {
+    if (session?.user.role !== "admin") {
+      return NextResponse.json(
+        {
+          error: "Unauthorized",
+        },
+        {
+          status: 401,
+        }
+      );
+    }
     const name = await db.button.findFirst({
       select: { name: true },
     });
@@ -23,7 +36,18 @@ export async function GET(req: Request) {
 }
 
 export async function POST(req: Request) {
+  const session = await getServerSession(authOptions);
   try {
+    if (session?.user.role !== "admin") {
+      return NextResponse.json(
+        {
+          error: "Unauthorized",
+        },
+        {
+          status: 401,
+        }
+      );
+    }
     const { buttonText } = await req.json();
     if (!buttonText || typeof buttonText !== "string")
       throw new Error("Invalid request");

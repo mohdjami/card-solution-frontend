@@ -81,7 +81,7 @@ export default function Navbar() {
                   Admin{" "}
                 </Link>
               ) : (
-                <>Nothing</>
+                <></>
               )}
               {session?.user ? (
                 <UserAccountNav />

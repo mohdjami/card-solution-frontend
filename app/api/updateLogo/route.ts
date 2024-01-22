@@ -1,8 +1,22 @@
+import { Session } from "inspector";
 import { db } from "@/lib/db";
 import { NextResponse } from "next/server";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth";
 
 export async function POST(req: Request) {
+  const session = await getServerSession(authOptions);
   try {
+    if (session?.user.role !== "admin") {
+      return NextResponse.json(
+        {
+          error: "Unauthorized",
+        },
+        {
+          status: 401,
+        }
+      );
+    }
     const { url } = await req.json();
     const newUrl = await db.logoUrl.upsert({
       where: { id: "logo" },
@@ -23,7 +37,18 @@ export async function POST(req: Request) {
 }
 
 export async function GET(req: Request) {
+  const session = await getServerSession(authOptions);
   try {
+    if (session?.user.role !== "admin") {
+      return NextResponse.json(
+        {
+          error: "Unauthorized",
+        },
+        {
+          status: 401,
+        }
+      );
+    }
     const logoUrl = await db.logoUrl.findFirst({
       select: { url: true },
     });
