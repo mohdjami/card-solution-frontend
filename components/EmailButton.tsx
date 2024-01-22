@@ -38,7 +38,7 @@ export function EmailButton() {
   const saveEmail = async (values: z.infer<typeof FormSchema>) => {
     const email = values.email;
     try {
-      const response = await fetch("/api/createEmail", {
+      const response = await fetch("/api/email", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -28,13 +28,47 @@ import {
   Table,
 } from "@/components/ui/table";
 import { Label } from "@/components/ui/label";
-import { JSX, SVGProps, useEffect, useState } from "react";
+import { JSX, SVGProps, SetStateAction, useEffect, useState } from "react";
 import ImageUpload from "./ImageUpload";
 import { toast } from "./ui/use-toast";
 import { LoaderIcon } from "lucide-react";
 import Image from "next/image";
 
 export default function Admin() {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [emails, setEmails] = useState("");
+  const [filteredEmails, setFilteredEmails] = useState<{ email: string }[]>([]);
+  const handleSearch = (event: {
+    target: { value: SetStateAction<string> };
+  }) => {
+    setSearchTerm(event.target.value);
+  };
+  // Assuming you have a list of emails
+  // const emails = ["test1@test.com", "example2@gmail.com", "example3@gmail.com"];
+  useEffect(() => {
+    const getEmails = async () => {
+      const res = await fetch("/api/email/search", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ searchTerm }),
+      });
+
+      const { data } = await res.json();
+      console.log(data[0].email);
+
+      const filteredEmails = data.filter((item: { email: string }) =>
+        item.email.toLowerCase().startsWith(searchTerm.toLowerCase())
+      );
+
+      console.log("filtered", filteredEmails);
+      setFilteredEmails(filteredEmails);
+      console.log(filteredEmails.map((item: { email: any }) => item.email));
+    };
+
+    getEmails();
+  }, [searchTerm]);
   return (
     <div className="flex h-screen bg-purple-100 dark:bg-purple-900">
       <div className="flex flex-col w-full md:w-64 border-r border-purple-200 dark:border-purple-800">
@@ -107,11 +141,13 @@ export default function Admin() {
           <div className="w-full flex-1">
             <form>
               <div className="relative">
-                <SearchIcon className="absolute left-2.5 top-2.5 h-4 w-4 text-purple-500 dark:text-purple-400" />
+                <SearchIcon className="absolute left-2.5 top-2.5 h-4 w-4 text-gray-500 dark:text-gray-400" />
                 <Input
-                  className="w-full bg-white shadow-none appearance-none pl-8 md:w-2/3 lg:w-1/3 dark:bg-purple-950"
-                  placeholder="Search products..."
+                  className="w-full bg-white shadow-none appearance-none pl-8 md:w-2/3 lg:w-1/3 dark:bg-gray-950"
+                  placeholder="Search by Email..."
                   type="search"
+                  value={searchTerm}
+                  onChange={handleSearch}
                 />
               </div>
             </form>
@@ -148,7 +184,7 @@ export default function Admin() {
           </DropdownMenu>
         </header>
         <main className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-6">
-          <Hero />
+          <Hero filteredEmails={filteredEmails} />{" "}
         </main>
       </div>
     </div>
@@ -326,20 +362,15 @@ function UsersIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
     </svg>
   );
 }
-
-function Hero() {
+interface HeroProps {
+  filteredEmails: { email: string }[];
+}
+const Hero = ({ filteredEmails }: HeroProps) => {
+  console.log("hero", filteredEmails);
   const [buttonText, setButtonText] = useState("");
   const [loading, isLoading] = useState(false);
   const [emails, setEmails] = useState([]);
 
-  useEffect(() => {
-    const getEmails = async () => {
-      const res = await fetch("/api/createEmail");
-      const data = await res.json();
-      setEmails(data.emails);
-    };
-    getEmails();
-  }, []);
   const updateButton = async () => {
     try {
       isLoading(true);
@@ -376,9 +407,9 @@ function Hero() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                {emails.map((emailObj: { email: string }, index: number) => (
-                  <TableRow key={index}>
-                    <TableCell>{emailObj.email}</TableCell>
+                {filteredEmails.map((item: { email: any }) => (
+                  <TableRow key={item.email}>
+                    <TableCell>{item.email}</TableCell>
                   </TableRow>
                 ))}
               </TableRow>
@@ -425,4 +456,4 @@ function Hero() {
       </section>
     </div>
   );
-}
+};

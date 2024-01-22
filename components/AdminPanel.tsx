@@ -27,10 +27,22 @@ import {
   Table,
 } from "@/components/ui/table";
 import { Label } from "@/components/ui/label";
-import { JSX, SVGProps } from "react";
+import { JSX, SVGProps, SetStateAction, useState } from "react";
 import Image from "next/image";
 
 export default function AdminPanel() {
+  const [searchTerm, setSearchTerm] = useState("");
+  const handleSearch = (event: {
+    target: { value: SetStateAction<string> };
+  }) => {
+    setSearchTerm(event.target.value);
+  };
+  // Assuming you have a list of emails
+  const emails = ["test1@test.com", "example2@gmail.com", "example3@gmail.com"];
+
+  const filteredEmails = emails.filter((email) =>
+    email.toLowerCase().includes(searchTerm.toLowerCase())
+  );
   return (
     <div className="flex h-screen bg-gray-100 dark:bg-gray-900">
       <div className="flex flex-col w-64 border-r border-gray-200 dark:border-gray-800">
@@ -114,8 +126,10 @@ export default function AdminPanel() {
                 <SearchIcon className="absolute left-2.5 top-2.5 h-4 w-4 text-gray-500 dark:text-gray-400" />
                 <Input
                   className="w-full bg-white shadow-none appearance-none pl-8 md:w-2/3 lg:w-1/3 dark:bg-gray-950"
-                  placeholder="Search products..."
+                  placeholder="Search by Email..."
                   type="search"
+                  value={searchTerm}
+                  onChange={handleSearch}
                 />
               </div>
             </form>
