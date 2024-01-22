@@ -160,27 +160,17 @@ export default function Admin() {
                   size="icon"
                   variant="ghost"
                 >
-                  <Image
-                    alt="Avatar"
-                    className="rounded-full"
-                    height={32}
-                    src="/placeholder.svg"
-                    style={{
-                      aspectRatio: "32/32",
-                      objectFit: "cover",
-                    }}
-                    width={32}
-                  />
+                  <Badge />
                   <span className="sr-only">Toggle user menu</span>
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
-                <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                <DropdownMenuLabel> Home</DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>Settings</DropdownMenuItem>
-                <DropdownMenuItem>Support</DropdownMenuItem>
+                <DropdownMenuItem> Products</DropdownMenuItem>
+                <DropdownMenuItem>Customers</DropdownMenuItem>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>Logout</DropdownMenuItem>
+                <DropdownMenuItem>Analytics</DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
           </header>

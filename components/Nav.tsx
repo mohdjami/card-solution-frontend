@@ -57,8 +57,8 @@ export default function Navbar() {
       {" "}
       <div className="flex items-center ">
         <Sheet>
-          <SheetTrigger className="flex flex-row items-center space-y-0 md:hidden">
-            <div className="flex justify-between">
+          <SheetTrigger className="flex flex-row items-center w-full md:hidden">
+            <div className="flex justify-between w-full">
               <Menu className="md:hidden" />
               <Link href="/">
                 <Image src={logoUrl} alt="Logo" width={50} height={50} />
