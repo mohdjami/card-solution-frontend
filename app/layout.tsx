@@ -9,6 +9,7 @@ import { SessionProvider } from "next-auth/react";
 
 import { ourFileRouter } from "@/app/api/uploadthing/core";
 import Provider from "@/components/Provider";
+import About from "@/components/About";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -28,6 +29,7 @@ export default function RootLayout({
           <NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)} />
           <Nav />
           <main>{children}</main>
+
           <Toaster />
         </Provider>
       </body>

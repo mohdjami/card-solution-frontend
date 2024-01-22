@@ -70,124 +70,126 @@ export default function Admin() {
     getEmails();
   }, [searchTerm]);
   return (
-    <div className="flex h-screen bg-purple-100 dark:bg-purple-900">
-      <div className="flex flex-col w-full md:w-64 border-r border-purple-200 dark:border-purple-800">
-        <div className="flex h-[60px] items-center border-b px-6">
-          <Link
-            className="flex items-center gap-2 font-semibold text-white"
-            href="#"
-          >
-            <Package2Icon className="h-6 w-6" />
-            <span className="">DIGI LABS</span>
-          </Link>
-          <Button
-            className="ml-auto h-8 w-8 text-white"
-            size="icon"
-            variant="outline"
-          >
-            <BellIcon className="h-4 w-4" />
-            <span className="sr-only">Toggle notifications</span>
-          </Button>
-        </div>
-        <div className="flex-1 overflow-auto py-2">
-          <nav className="grid items-start px-4 text-sm font-medium">
+    <section className="w-full bg-white-100 dark:bg-white-800">
+      <div className="flex h-screen  dark:bg-purple-900">
+        <div className="flex flex-col w-full md:w-64 border-r border-purple-200 dark:border-purple-800  md:block hidden">
+          <div className="flex h-[60px] items-center border-b px-6">
             <Link
-              className="flex items-center gap-3 rounded-lg px-3 py-2 text-purple-500 transition-all hover:text-purple-900 dark:text-purple-400 dark:hover:text-purple-50"
+              className="flex items-center gap-2 font-semibold text-white"
               href="#"
             >
-              <HomeIcon className="h-4 w-4" />
-              Home
+              <Package2Icon className="h-6 w-6" />
+              <span className="text-black">DIGI LABS</span>
             </Link>
-            <Link
-              className="flex items-center gap-3 rounded-lg px-3 py-2 text-purple-500 transition-all hover:text-purple-900 dark:text-purple-400 dark:hover:text-purple-50"
-              href="#"
+            <Button
+              className="ml-auto h-8 w-8 text-white"
+              size="icon"
+              variant="secondary"
             >
-              <ShoppingCartIcon className="h-4 w-4" />
-              Orders
-              <Badge className="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full">
-                6
-              </Badge>
-            </Link>
-            <Link
-              className="flex items-center gap-3 rounded-lg bg-purple-100 px-3 py-2 text-purple-900  transition-all hover:text-purple-900 dark:bg-purple-800 dark:text-purple-50 dark:hover:text-purple-50"
-              href="#"
-            >
-              <PackageIcon className="h-4 w-4" />
-              Products
-            </Link>
-            <Link
-              className="flex items-center gap-3 rounded-lg px-3 py-2 text-purple-500 transition-all hover:text-purple-900 dark:text-purple-400 dark:hover:text-purple-50"
-              href="#"
-            >
-              <UsersIcon className="h-4 w-4" />
-              Customers
-            </Link>
-            <Link
-              className="flex items-center gap-3 rounded-lg px-3 py-2 text-purple-500 transition-all hover:text-purple-900 dark:text-purple-400 dark:hover:text-purple-50"
-              href="#"
-            >
-              <LineChartIcon className="h-4 w-4" />
-              Analytics
-            </Link>
-          </nav>
-        </div>
-      </div>
-      <div className="flex flex-col flex-1">
-        <header className="flex h-14 lg:h-[60px] items-center gap-4 border-b bg-purple-100/40 px-6 dark:bg-purple-800/40">
-          <Link className="lg:hidden" href="#">
-            <Package2Icon className="h-6 w-6 text-white" />
-            <span className="sr-only">Home</span>
-          </Link>
-          <div className="w-full flex-1">
-            <form>
-              <div className="relative">
-                <SearchIcon className="absolute left-2.5 top-2.5 h-4 w-4 text-gray-500 dark:text-gray-400" />
-                <Input
-                  className="w-full bg-white shadow-none appearance-none pl-8 md:w-2/3 lg:w-1/3 dark:bg-gray-950"
-                  placeholder="Search by Email..."
-                  type="search"
-                  value={searchTerm}
-                  onChange={handleSearch}
-                />
-              </div>
-            </form>
+              <BellIcon className="h-4 w-4" />
+              <span className="sr-only">Toggle notifications</span>
+            </Button>
           </div>
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button
-                className="rounded-full border border-purple-200 w-8 h-8 dark:border-purple-800"
-                size="icon"
-                variant="ghost"
+          <div className="flex-1 overflow-auto py-2 ">
+            <nav className="grid items-start px-4 text-sm font-medium ">
+              <Link
+                className="flex items-center gap-3 rounded-lg px-3 py-2 text-purple-500 transition-all hover:text-purple-900 dark:text-purple-400 dark:hover:text-purple-50"
+                href="#"
               >
-                <Image
-                  alt="Avatar"
-                  className="rounded-full"
-                  height={32}
-                  src="/placeholder.svg"
-                  style={{
-                    aspectRatio: "32/32",
-                    objectFit: "cover",
-                  }}
-                  width={32}
-                />
-                <span className="sr-only">Toggle user menu</span>
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuLabel>My Account</DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem>Settings</DropdownMenuItem>
-              <DropdownMenuItem>Support</DropdownMenuItem>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem>Logout</DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-        </header>
-        <main className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-6">
-          <Hero filteredEmails={filteredEmails} />{" "}
-        </main>
+                <HomeIcon className="h-4 w-4" />
+                Home
+              </Link>
+              <Link
+                className="flex items-center gap-3 rounded-lg px-3 py-2 text-purple-500 transition-all hover:text-purple-900 dark:text-purple-400 dark:hover:text-purple-50"
+                href="#"
+              >
+                <ShoppingCartIcon className="h-4 w-4" />
+                Orders
+                <Badge className="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full">
+                  6
+                </Badge>
+              </Link>
+              <Link
+                className="flex items-center gap-3 rounded-lg bg-purple-100 px-3 py-2 text-purple-900  transition-all hover:text-purple-900 dark:bg-purple-800 dark:text-purple-50 dark:hover:text-purple-50"
+                href="#"
+              >
+                <PackageIcon className="h-4 w-4" />
+                Products
+              </Link>
+              <Link
+                className="flex items-center gap-3 rounded-lg px-3 py-2 text-purple-500 transition-all hover:text-purple-900 dark:text-purple-400 dark:hover:text-purple-50"
+                href="#"
+              >
+                <UsersIcon className="h-4 w-4" />
+                Customers
+              </Link>
+              <Link
+                className="flex items-center gap-3 rounded-lg px-3 py-2 text-purple-500 transition-all hover:text-purple-900 dark:text-purple-400 dark:hover:text-purple-50"
+                href="#"
+              >
+                <LineChartIcon className="h-4 w-4" />
+                Analytics
+              </Link>
+            </nav>
+          </div>
+        </div>
+        <div className="flex flex-col flex-1">
+          <header className="flex h-14 lg:h-[60px] items-center gap-4 border-b bg-purple-100/40 px-6 dark:bg-purple-800/40">
+            <Link className="lg:hidden" href="#">
+              <Package2Icon className="h-6 w-6 text-white" />
+              <span className="sr-only">Home</span>
+            </Link>
+            <div className="w-full flex-1">
+              <form>
+                <div className="relative">
+                  <SearchIcon className="absolute left-2.5 top-2.5 h-4 w-4 text-gray-500 dark:text-gray-400" />
+                  <Input
+                    className="w-full bg-white shadow-none appearance-none pl-8 md:w-2/3 lg:w-1/3 dark:bg-gray-950"
+                    placeholder="Search by Email..."
+                    type="search"
+                    value={searchTerm}
+                    onChange={handleSearch}
+                  />
+                </div>
+              </form>
+            </div>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button
+                  className="rounded-full border border-purple-200 w-8 h-8 dark:border-purple-800"
+                  size="icon"
+                  variant="ghost"
+                >
+                  <Image
+                    alt="Avatar"
+                    className="rounded-full"
+                    height={32}
+                    src="/placeholder.svg"
+                    style={{
+                      aspectRatio: "32/32",
+                      objectFit: "cover",
+                    }}
+                    width={32}
+                  />
+                  <span className="sr-only">Toggle user menu</span>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>Settings</DropdownMenuItem>
+                <DropdownMenuItem>Support</DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>Logout</DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </header>
+          <main className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-6">
+            <Hero filteredEmails={filteredEmails} />{" "}
+          </main>
+        </div>
       </div>
-    </div>
+    </section>
   );
 }
 

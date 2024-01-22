@@ -14,45 +14,44 @@ export default function Hero() {
     buttonName();
   }, []);
   return (
-    <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-100 dark:bg-gray-800">
-      <div className="container px-4 md:px-6">
+    <section className="w-full py-6 md:py-12 lg:py-16 xl:py-20 bg-gray-100 dark:bg-gray-800">
+      <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col items-center space-y-4 text-center">
           <div className="space-y-2">
             <h1
-              className="mx-auto max-w-[700px] text-2xl md:text-3xl dark:text-gray-400"
+              className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl dark:text-gray-400"
               style={{ color: "#582066" }}
             >
               Seamless experience
             </h1>
             <div className="flex items-center justify-center">
               <p
-                className="font-bold tracking-tighter text-center text-4xl sm:text-5xl md:text-6xl"
+                className="font-bold tracking-tighter text-center text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl"
                 style={{
                   fontFamily: "Manrope, sans-serif",
                   fontWeight: 600,
-                  lineHeight: "72px",
-                  letterSpacing: "0em",
+                  lineHeight: "1.2",
                   textAlign: "center",
                 }}
               >
                 Unleashing The Next Generation Of Card Solutions
               </p>
             </div>
-            <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
+            <p className="text-gray-500 text-base md:text-lg lg:text-xl xl:text-2xl dark:text-gray-400">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
               euismod eget lorem quis pharetra.
             </p>
           </div>
           <div className="space-x-4">
             <Button
-              className="inline-flex h-9 items-center justify-center rounded-md px-4 py-2 text-sm font-medium text-gray-50 shadow transition-colors focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50"
+              className="inline-flex h-9 items-center justify-center rounded-md px-4 py-2 text-sm md:text-base lg:text-lg xl:text-xl font-medium text-gray-50 shadow transition-colors focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50"
               style={{ backgroundColor: "#582066" }}
             >
               {button}
               <ArrowRightIcon className="ml-2 h-5 w-5" />
             </Button>
           </div>
-          <p className="text-sm text-gray-500 dark:text-gray-400">
+          <p className="text-sm md:text-base lg:text-lg xl:text-xl text-gray-500 dark:text-gray-400">
             No credit card required
           </p>
         </div>
@@ -81,7 +80,4 @@ function ArrowRightIcon(
       <path d="m12 5 7 7-7 7" />
     </svg>
   );
-}
-function async() {
-  throw new Error("Function not implemented.");
 }

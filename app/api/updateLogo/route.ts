@@ -28,15 +28,22 @@ export async function GET(req: Request) {
       select: { url: true },
     });
     if (!logoUrl) {
-      return NextResponse.json({
-        data: null,
-      });
+      return NextResponse.json(
+        {
+          data: null,
+        },
+        { status: 404 }
+      );
     }
     const url = logoUrl.url;
-    return NextResponse.json({
-      success: true,
-      url,
-    });
+    return NextResponse.json(
+      {
+        url,
+      },
+      {
+        status: 201,
+      }
+    );
   } catch (error) {
     return NextResponse.json({
       status: 500,

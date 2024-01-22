@@ -55,10 +55,15 @@ export default function Navbar() {
   return (
     <main>
       {" "}
-      <div className="flex items-center">
+      <div className="flex items-center ">
         <Sheet>
-          <SheetTrigger>
-            <Menu className="h-6 md:hidden w-6" />
+          <SheetTrigger className="flex flex-row items-center space-y-0 md:hidden">
+            <div className="flex justify-between">
+              <Menu className="md:hidden" />
+              <Link href="/">
+                <Image src={logoUrl} alt="Logo" width={50} height={50} />
+              </Link>
+            </div>
           </SheetTrigger>
           <SheetContent side="left" className="w-[300px] sm:w-[400px]">
             <nav className="flex flex-col gap-4">
@@ -78,13 +83,23 @@ export default function Navbar() {
               ) : (
                 <>Nothing</>
               )}
-              <ContactDrawer />
+              {session?.user ? (
+                <UserAccountNav />
+              ) : (
+                <Link
+                  className={buttonVariants({ variant: "secondary" })}
+                  href="/signin"
+                >
+                  Sign in
+                </Link>
+              )}
               <EmailButton />
             </nav>
           </SheetContent>
         </Sheet>
       </div>
-      <header className="flex h-20 w-full shrink-0 items-center px-4 md:px-6">
+      <header className="flex h-5 sm:h-20 w-full shrink-0 items-center px-4 md:px-6">
+        {" "}
         <div className="w-[150px]">
           <Link className="mr-6 hidden lg:flex" href="/">
             <Image src={logoUrl} alt="Logo" width={100} height={100} />{" "}
@@ -162,18 +177,20 @@ export default function Navbar() {
             </NavigationMenuList>
           </NavigationMenu>
         </div>
-        <EmailButton />
-        {"   "} &nbsp; &nbsp;
-        {session?.user ? (
-          <UserAccountNav />
-        ) : (
-          <Link
-            className={buttonVariants({ variant: "secondary" })}
-            href="/signin"
-          >
-            Sign in
-          </Link>
-        )}
+        <div className="flex p-5 md:hidden lg:flex hidden">
+          <EmailButton />
+          &nbsp; &nbsp;
+          {session?.user ? (
+            <UserAccountNav />
+          ) : (
+            <Link
+              className={buttonVariants({ variant: "secondary" })}
+              href="/signin"
+            >
+              Sign in
+            </Link>
+          )}
+        </div>
       </header>
     </main>
   );
