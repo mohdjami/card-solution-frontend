@@ -9,12 +9,13 @@ import {
 import { JSX, SVGProps, useEffect, useState } from "react";
 import { EmailButton } from "./EmailButton";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
-import { Menu } from "lucide-react";
+import { Loader2Icon, Menu } from "lucide-react";
 import { ContactDrawer } from "./ContactDrawer";
 import { useSession } from "next-auth/react";
 import UserAccountNav from "./UserAccountNav";
 import { buttonVariants } from "./ui/button";
 import Image from "next/image";
+import { Icons } from "./icons";
 const routes = [
   {
     href: "/#content",
@@ -39,14 +40,16 @@ const routes = [
 ];
 export default function Navbar() {
   const { data: session } = useSession();
-
+  const [loading, isLoading] = useState(true);
   const [logoUrl, setLogoUrl] = useState("");
   useEffect(() => {
+    isLoading(true);
     async function fetchLogoUrl() {
       const data = await fetch("api/updateLogo");
       if (!data.ok) throw new Error(await data.text());
       const url = await data.json();
       setLogoUrl(url.url);
+      isLoading(false);
     }
 
     fetchLogoUrl();
@@ -60,9 +63,13 @@ export default function Navbar() {
           <SheetTrigger className="flex flex-row items-center w-full md:hidden">
             <div className="flex justify-between w-full">
               <Menu className="md:hidden" />
-              <Link href="/">
-                <Image src={logoUrl} alt="Logo" width={50} height={50} />
-              </Link>
+              {loading ? (
+                <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+              ) : (
+                <Link href="/">
+                  <Image src={logoUrl} alt="Logo" width={50} height={50} />
+                </Link>
+              )}
             </div>
           </SheetTrigger>
           <SheetContent side="left" className="w-[300px] sm:w-[400px]">
@@ -101,9 +108,13 @@ export default function Navbar() {
       <header className="flex h-5 sm:h-20 w-full shrink-0 items-center px-4 md:px-6">
         {" "}
         <div className="w-[150px]">
-          <Link className="mr-6 hidden lg:flex" href="/">
-            <Image src={logoUrl} alt="Logo" width={100} height={100} />{" "}
-          </Link>
+          {loading ? (
+            <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+          ) : (
+            <Link className="mr-6 hidden lg:flex" href="/">
+              <Image src={logoUrl} alt="Logo" width={100} height={100} />{" "}
+            </Link>
+          )}
         </div>
         <div className="flex w-full justify-center">
           <NavigationMenu className="hidden lg:flex">

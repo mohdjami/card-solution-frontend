@@ -33,10 +33,12 @@ import ImageUpload from "./ImageUpload";
 import { toast } from "./ui/use-toast";
 import { LoaderIcon } from "lucide-react";
 import Image from "next/image";
+import { Icons } from "./icons";
 
 export default function Admin() {
   const [searchTerm, setSearchTerm] = useState("");
   const [emails, setEmails] = useState("");
+  const [loading, isLoading] = useState(true);
   const [filteredEmails, setFilteredEmails] = useState<{ email: string }[]>([]);
   const handleSearch = (event: {
     target: { value: SetStateAction<string> };
@@ -46,6 +48,7 @@ export default function Admin() {
   // Assuming you have a list of emails
   // const emails = ["test1@test.com", "example2@gmail.com", "example3@gmail.com"];
   useEffect(() => {
+    isLoading(true);
     const getEmails = async () => {
       const res = await fetch("/api/email/search", {
         method: "POST",
@@ -64,13 +67,14 @@ export default function Admin() {
 
       console.log("filtered", filteredEmails);
       setFilteredEmails(filteredEmails);
-      console.log(filteredEmails.map((item: { email: any }) => item.email));
+      isLoading(false);
+      // console.log(filteredEmails.map((item: { email: any }) => item.email));
     };
 
     getEmails();
   }, [searchTerm]);
   return (
-    <section className="w-full bg-white-100 dark:bg-white-800">
+    <section className="w-full bg-purple-100 dark:bg-white-800">
       <div className="flex h-screen  dark:bg-purple-900">
         <div className="flex flex-col w-full md:w-64 border-r border-purple-200 dark:border-purple-800  md:block hidden">
           <div className="flex h-[60px] items-center border-b px-6">
@@ -78,7 +82,7 @@ export default function Admin() {
               className="flex items-center gap-2 font-semibold text-white"
               href="#"
             >
-              <Package2Icon className="h-6 w-6" />
+              <Package2Icon className="h-6 w-6 text-purple-500" />
               <span className="text-black">DIGI LABS</span>
             </Link>
             <Button
@@ -86,7 +90,7 @@ export default function Admin() {
               size="icon"
               variant="secondary"
             >
-              <BellIcon className="h-4 w-4" />
+              <BellIcon className="h-4 w-4 text-purple-500" />
               <span className="sr-only">Toggle notifications</span>
             </Button>
           </div>
@@ -156,7 +160,7 @@ export default function Admin() {
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button
-                  className="rounded-full border border-purple-200 w-8 h-8 dark:border-purple-800"
+                  className="rounded-full border border-purple-200 w-8 h-8 lg:hidden dark:border-purple-800"
                   size="icon"
                   variant="ghost"
                 >
@@ -360,12 +364,12 @@ interface HeroProps {
 const Hero = ({ filteredEmails }: HeroProps) => {
   console.log("hero", filteredEmails);
   const [buttonText, setButtonText] = useState("");
-  const [loading, isLoading] = useState(false);
+  const [buttonLoading, isbuttonLoading] = useState(false);
   const [emails, setEmails] = useState([]);
 
   const updateButton = async () => {
     try {
-      isLoading(true);
+      isbuttonLoading(true);
       const res = await fetch("/api/updateButton", {
         method: "POST",
         headers: {
@@ -377,7 +381,7 @@ const Hero = ({ filteredEmails }: HeroProps) => {
         title: "Button text updated",
       });
       if (res.ok) {
-        isLoading(false);
+        isbuttonLoading(false);
       }
     } catch (error) {
       toast({
@@ -429,10 +433,10 @@ const Hero = ({ filteredEmails }: HeroProps) => {
               onChange={(e) => setButtonText(e.target.value)}
             />
             <div className="mt-4">
-              {loading ? (
+              {buttonLoading ? (
                 <>
                   <Button className="w-full" onClick={updateButton}>
-                    <LoaderIcon />
+                    <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
                     {"  "}
                     Update Button Text
                   </Button>
