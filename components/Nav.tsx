@@ -87,7 +87,7 @@ export default function Navbar() {
       <header className="flex h-20 w-full shrink-0 items-center px-4 md:px-6">
         <div className="w-[150px]">
           <Link className="mr-6 hidden lg:flex" href="/">
-            <Image src={logoUrl} alt="Logo" />{" "}
+            <Image src={logoUrl} alt="Logo" width={100} height={100} />{" "}
           </Link>
         </div>
         <div className="flex w-full justify-center">

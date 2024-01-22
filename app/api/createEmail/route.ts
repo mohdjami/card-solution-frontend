@@ -5,6 +5,15 @@ import { NextResponse } from "next/server";
 export async function POST(req: Request) {
   try {
     const { email } = await req.json();
+    console.log("email ", email);
+    if (!email || email === undefined) {
+      return NextResponse.json(
+        {
+          message: "Email is required",
+        },
+        { status: 404 }
+      );
+    }
     const emailExists = await db.email.findUnique({
       where: { email: email },
     });
@@ -13,21 +22,22 @@ export async function POST(req: Request) {
         {
           message: "Email already exists",
         },
-        { status: 200 }
+        { status: 409 }
       );
     }
-    await db.email.create({
+    const newEmail = await db.email.create({
       data: { email: email },
     });
     return NextResponse.json(
       {
-        data: email,
+        data: newEmail,
       },
       {
         status: 201,
       }
     );
   } catch (error) {
+    console.log(error);
     return NextResponse.json(
       {
         error,

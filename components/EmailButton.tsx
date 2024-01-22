@@ -29,7 +29,6 @@ const FormSchema = z.object({
 });
 
 export function EmailButton() {
-  const [email, setEmail] = useState("");
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -37,18 +36,23 @@ export function EmailButton() {
     },
   });
   const saveEmail = async (values: z.infer<typeof FormSchema>) => {
+    const email = values.email;
     try {
       const response = await fetch("/api/createEmail", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ values }),
+        body: JSON.stringify({ email }),
       });
       const data = await response.json();
-      toast({
-        title: "Email created successfully",
-      });
+      console.log(response);
+      if (!response.ok) throw new Error(data);
+      else {
+        toast({
+          title: "Email created successfully",
+        });
+      }
       window.location.reload();
     } catch (error) {
       toast({
