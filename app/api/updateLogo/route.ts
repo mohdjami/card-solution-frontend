@@ -37,18 +37,7 @@ export async function POST(req: Request) {
 }
 
 export async function GET(req: Request) {
-  const session = await getServerSession(authOptions);
   try {
-    if (session?.user.role !== "admin") {
-      return NextResponse.json(
-        {
-          error: "Unauthorized",
-        },
-        {
-          status: 401,
-        }
-      );
-    }
     const logoUrl = await db.logoUrl.findFirst({
       select: { url: true },
     });
