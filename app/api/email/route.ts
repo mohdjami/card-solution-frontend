@@ -5,18 +5,7 @@ import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
-  const session = await getServerSession(authOptions);
   try {
-    if (session?.user.role !== "admin") {
-      return NextResponse.json(
-        {
-          error: "Unauthorized",
-        },
-        {
-          status: 401,
-        }
-      );
-    }
     const { email } = await req.json();
     console.log("email ", email);
     if (!email || email === undefined) {
